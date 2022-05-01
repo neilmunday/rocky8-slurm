@@ -20,6 +20,12 @@ Run the container in detached mode:
 docker-rocky8-slurm]$ docker run -d --name slurm neilmunday/rocky8-slurm
 ```
 
+Check that the container started ok:
+
+```
+docker logs slurm
+```
+
 Then you can run commands inside the container like so:
 
 ```
