@@ -26,6 +26,7 @@ RUN dnf install -y dnf-plugins-core && \
     supervisor \
     tini \
     wget && \
+    cd /root && \
     wget https://download.schedmd.com/slurm/slurm-${SLURM_VER}.tar.bz2 && \
     rpmbuild -tb slurm-${SLURM_VER}.tar.bz2 && \
     dnf localinstall -y /root/rpmbuild/RPMS/x86_64/slurm-${SLURM_VER}-1.el8.x86_64.rpm \
