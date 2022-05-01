@@ -31,3 +31,9 @@ Then you can run commands inside the container like so:
 ```
 docker exec slurm sinfo
 ```
+
+To submit a job:
+
+```
+docker exec -i slurm sbatch < myjob.sh
+```
