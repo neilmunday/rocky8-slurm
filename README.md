@@ -5,3 +5,23 @@ A Rocky 8 Docker image with a working Slurm installation. This image is intended
 At present there are no persistent volumes so each invocation of the image creates a clean set-up.
 
 Note: this is a work in progress!
+
+## Building
+
+Use the `SLURM_VER` build argument to specify the Slurm version to build in the image.
+
+The default value is currently 21.08.7.
+
+## Running
+
+Run the container in detached mode:
+
+```
+docker-rocky8-slurm]$ docker run -d --name slurm neilmunday/rocky8-slurm
+```
+
+Then you can run commands inside the container like so:
+
+```
+docker exec slurm sinfo
+```

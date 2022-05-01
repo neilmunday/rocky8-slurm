@@ -37,3 +37,5 @@ supervisorctl start slurmctld || die "slurmctld failed to start" /var/log/slurm/
 supervisorctl start slurmd || die "slurmd failed to start" /var/log/slurm/slurmd.log
 
 sinfo
+
+exec $@

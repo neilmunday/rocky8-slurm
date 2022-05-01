@@ -5,6 +5,9 @@ LABEL org.opencontainers.image.source="https://github.com/neilmunday/docker-rock
       org.opencontainers.image.title="rocky8-slurm" \
       maintainer="Neil Munday"
 
+ARG SLURM_VER=21.08.7
+
+# download, build, install and clean-up
 RUN dnf install -y dnf-plugins-core && \
     dnf update -y && \
     dnf install -y epel-release && \
@@ -21,18 +24,15 @@ RUN dnf install -y dnf-plugins-core && \
     readline-devel \
     rpm-build \
     supervisor \
-    wget
-
-ARG SLURM_VER=21.08.7
-
-# download, build, install and clean-up
-RUN wget https://download.schedmd.com/slurm/slurm-${SLURM_VER}.tar.bz2 && \
+    tini \
+    wget && \
+    wget https://download.schedmd.com/slurm/slurm-${SLURM_VER}.tar.bz2 && \
     rpmbuild -tb slurm-${SLURM_VER}.tar.bz2 && \
     dnf localinstall -y /root/rpmbuild/RPMS/x86_64/slurm-${SLURM_VER}-1.el8.x86_64.rpm \
     /root/rpmbuild/RPMS/x86_64/slurm-slurmctld-${SLURM_VER}-1.el8.x86_64.rpm \
     /root/rpmbuild/RPMS/x86_64/slurm-slurmd-${SLURM_VER}-1.el8.x86_64.rpm \
     /root/rpmbuild/RPMS/x86_64/slurm-slurmdbd-${SLURM_VER}-1.el8.x86_64.rpm && \
-    dnf -y erase gcc mariab-devel munge-devel pam-devel readline-devel rpm-build wget && \
+    dnf -y erase gcc mariab-devel make munge-devel pam-devel readline-devel rpm-build wget && \
     dnf clean all && \
     rm -rf /root/rpmbuild /root/slurm*.tar.bz2
 
@@ -51,5 +51,5 @@ COPY --chown=root entrypoint.sh /usr/local/sbin/
 
 RUN /usr/bin/mysql_install_db --user=mysql
 
-ENTRYPOINT ["/usr/bin/bash", "/usr/local/sbin/entrypoint.sh"]
-CMD [ "/usr/bin/bash "]
+ENTRYPOINT ["/usr/bin/tini", "--", "/usr/local/sbin/entrypoint.sh"]
+CMD ["tail -f /dev/null"]
