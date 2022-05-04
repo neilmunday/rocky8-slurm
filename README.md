@@ -14,7 +14,7 @@ Note: this is a work in progress!
 
 Use the `SLURM_VER` build argument to specify the Slurm version to build in the image.
 
-The default value is currently 21.08.7.
+The default value is currently 21.08.8.
 
 ## Running
 
