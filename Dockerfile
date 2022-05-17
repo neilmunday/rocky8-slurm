@@ -5,7 +5,7 @@ LABEL org.opencontainers.image.source="https://github.com/neilmunday/docker-rock
       org.opencontainers.image.title="rocky8-slurm" \
       maintainer="Neil Munday"
 
-ARG SLURM_VER=21.08.8
+ARG SLURM_VER=21.08.8-2
 
 # download, build, install and clean-up
 RUN dnf install -y dnf-plugins-core && \
@@ -28,10 +28,10 @@ RUN dnf install -y dnf-plugins-core && \
     wget && \
     wget https://download.schedmd.com/slurm/slurm-${SLURM_VER}.tar.bz2 -O /root/slurm-${SLURM_VER}.tar.bz2 && \
     rpmbuild -tb /root/slurm-${SLURM_VER}.tar.bz2 && \
-    dnf localinstall -y /root/rpmbuild/RPMS/x86_64/slurm-${SLURM_VER}-1.el8.x86_64.rpm \
-    /root/rpmbuild/RPMS/x86_64/slurm-slurmctld-${SLURM_VER}-1.el8.x86_64.rpm \
-    /root/rpmbuild/RPMS/x86_64/slurm-slurmd-${SLURM_VER}-1.el8.x86_64.rpm \
-    /root/rpmbuild/RPMS/x86_64/slurm-slurmdbd-${SLURM_VER}-1.el8.x86_64.rpm && \
+    dnf localinstall -y /root/rpmbuild/RPMS/x86_64/slurm-${SLURM_VER}*.el8.x86_64.rpm \
+    /root/rpmbuild/RPMS/x86_64/slurm-slurmctld-${SLURM_VER}*.el8.x86_64.rpm \
+    /root/rpmbuild/RPMS/x86_64/slurm-slurmd-${SLURM_VER}*.el8.x86_64.rpm \
+    /root/rpmbuild/RPMS/x86_64/slurm-slurmdbd-${SLURM_VER}*.el8.x86_64.rpm && \
     dnf -y erase gcc mariab-devel make munge-devel pam-devel readline-devel rpm-build wget && \
     dnf clean all && \
     rm -rf /root/rpmbuild /root/slurm*.tar.bz2

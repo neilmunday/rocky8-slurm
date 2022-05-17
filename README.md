@@ -14,14 +14,16 @@ Note: this is a work in progress!
 
 Use the `SLURM_VER` build argument to specify the Slurm version to build in the image.
 
-The default value is currently 21.08.8.
+The default value is currently 21.08.8-2.
+
+**Note:** The first release of a Slurm version does not require `-1` in the `SLURM_VER` value.
 
 ## Running
 
 Run the container in detached mode:
 
 ```
-docker-rocky8-slurm]$ docker run -d --name slurm neilmunday/rocky8-slurm
+docker run -d --name slurm neilmunday/rocky8-slurm
 ```
 
 Check that the container started ok:
