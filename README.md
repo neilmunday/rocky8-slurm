@@ -18,6 +18,16 @@ The default value is currently 21.08.8-2.
 
 ## Running
 
+### Interactive
+
+Run the container in interactive mode:
+
+```
+docker run -it --name slurm neilmunday/rocky8-slurm /bin/bash
+```
+
+### Detached
+
 Run the container in detached mode:
 
 ```
