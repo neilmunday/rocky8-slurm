@@ -45,9 +45,13 @@ RUN groupadd -r slurm && \
 RUN install -d -o slurm -g slurm /etc/slurm /var/spool/slurm /var/log/slurm
 
 COPY supervisord.conf /etc/
-COPY --chown=slurm slurm.conf /etc/slurm/
+COPY --chown=slurm slurm.*.conf /etc/slurm/
 COPY --chown=slurm slurmdbd.conf /etc/slurm/
 COPY --chown=root entrypoint.sh /usr/local/sbin/
+
+RUN MAJOR_VER=`echo ${SLURM_VER} | egrep -o "^[0-9]+"` && \
+  mv /etc/slurm/slurm.${MAJOR_VER}.conf /etc/slurm/slurm.conf && \
+  rm -f /etc/slurm/slurm.*.conf
 
 RUN /usr/bin/mysql_install_db --user=mysql
 
