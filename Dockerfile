@@ -5,7 +5,7 @@ LABEL org.opencontainers.image.source="https://github.com/neilmunday/docker-rock
       org.opencontainers.image.title="rocky8-slurm" \
       maintainer="Neil Munday"
 
-ARG SLURM_VER=22.05.3
+ARG SLURM_VER=22.05.4
 
 # download, build, install and clean-up
 RUN dnf install -y dnf-plugins-core && \

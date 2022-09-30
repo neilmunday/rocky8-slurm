@@ -1,5 +1,9 @@
 # Change log
 
+## 30th September 2022
+
+* Added support for Slurm 22.05.4
+
 ## 12th August 2022
 
 * Added support for Slurm 22.05.3
