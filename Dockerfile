@@ -34,15 +34,12 @@ RUN dnf install -y dnf-plugins-core && \
     /root/rpmbuild/RPMS/x86_64/slurm-slurmdbd-${SLURM_VER}*.el8.x86_64.rpm && \
     dnf -y erase gcc mariab-devel make munge-devel pam-devel readline-devel rpm-build wget && \
     dnf clean all && \
-    rm -rf /root/rpmbuild /root/slurm*.tar.bz2
-
-# add users
-RUN groupadd -r slurm && \
+    rm -rf /root/rpmbuild /root/slurm*.tar.bz2 && \
+    groupadd -r slurm && \
     useradd -r -g slurm -d /var/empty/slurm -m -s /bin/bash slurm && \
     groupadd test && \
-    useradd -g test -d /home/test -m test
-
-RUN install -d -o slurm -g slurm /etc/slurm /var/spool/slurm /var/log/slurm
+    useradd -g test -d /home/test -m test && \
+    install -d -o slurm -g slurm /etc/slurm /var/spool/slurm /var/log/slurm
 
 COPY supervisord.conf /etc/
 COPY --chown=slurm slurm.*.conf /etc/slurm/
