@@ -1,5 +1,9 @@
 # Change log
 
+## 17th November 2022
+
+* Added support for Slurm 22.05.6
+
 ## 7th November 2022
 
 * Improved image so that containers can be stopped and started without error
