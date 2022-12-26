@@ -1,6 +1,6 @@
 # rocky8-slurm
 
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/neilmunday/rocky8-slurm/Docker%20Image%20CI)](https://github.com/neilmunday/rocky8-slurm/actions/workflows/docker-image.yml) [![GitHub issues](https://img.shields.io/github/issues/neilmunday/rocky8-slurm)](https://github.com/neilmunday/rocky8-slurm/issues) [![GitHub license](https://img.shields.io/github/license/neilmunday/rocky8-slurm)](https://github.com/neilmunday/rocky8-slurm/blob/main/LICENSE)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/neilmunday/rocky8-slurm/docker-image.yml)](https://github.com/neilmunday/rocky8-slurm/actions/workflows/docker-image.yml) [![GitHub issues](https://img.shields.io/github/issues/neilmunday/rocky8-slurm)](https://github.com/neilmunday/rocky8-slurm/issues) [![GitHub license](https://img.shields.io/github/license/neilmunday/rocky8-slurm)](https://github.com/neilmunday/rocky8-slurm/blob/main/LICENSE)
 
 Source repository: https://www.github.com/neilmunday/rocky8-slurm
 
