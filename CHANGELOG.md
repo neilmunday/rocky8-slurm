@@ -1,5 +1,9 @@
 # Change log
 
+## 10th February 2023
+
+* Added new-version.py and associated workflow to check for new Slurm version.
+
 ## 3rd February 2023
 
 * Added support for Slurm 22.05.8
