@@ -55,6 +55,13 @@ if __name__ == "__main__":
         add_help=True
     )
     parser.add_argument(
+        "-c",
+        "--check",
+        help="Check for new version only",
+        dest="check",
+        action="store_true"
+    )
+    parser.add_argument(
         "-v",
         "--verbose",
         help="Turn on debug messages",
@@ -95,11 +102,18 @@ if __name__ == "__main__":
     if latest_version is None:
         die("could not determine Slurm version")
 
-    logging.info("latest version is: %s", latest_version)
     logging.info("version used by this repo: %s", current_version)
+    logging.info("latest version is: %s", latest_version)
 
     if current_version == latest_version:
         logging.info("nothing to do")
+        sys.exit(0)
+
+    if args.check:
+        latest_version_file = current_dir / "latest_version"
+        logging.info("writing latest version to: %s", latest_version_file)
+        with open(latest_version_file, mode="w", encoding="utf-8") as f:
+            f.write(latest_version)
         sys.exit(0)
 
     major_version = latest_version.split('.', 1)[0]
