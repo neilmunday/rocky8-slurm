@@ -1,6 +1,6 @@
 FROM rockylinux:8
 
-LABEL org.opencontainers.image.source="https://github.com/neilmunday/docker-rocky8-linux" \
+LABEL org.opencontainers.image.source="https://github.com/neilmunday/rocky8-slurm" \
       org.opencontainers.image.description="A Rocky 8 Slurm container intended for testing Slurm" \
       org.opencontainers.image.title="rocky8-slurm" \
       maintainer="Neil Munday"
