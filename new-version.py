@@ -9,6 +9,7 @@ import pathlib
 import re
 import sys
 from datetime import datetime
+from typing import List
 
 import requests
 from bs4 import BeautifulSoup
@@ -91,16 +92,19 @@ if __name__ == "__main__":
     download_re = re.compile(
         r"^https://download.schedmd.com/slurm/slurm-([0-9]+\.[0-9]+\.[0-9]+).tar.bz2$"
     )
-    latest_version = None
+    versions: List[str] = []
 
     for link in soup.find_all('a'):
         link = link.get("href")
         match = download_re.match(link)
         if match:
-            latest_version = match.group(1)
+            versions.append(match.group(1))
 
-    if latest_version is None:
+    if len(versions) == 0:
         die("could not determine Slurm version")
+
+    versions.sort()
+    latest_version = versions[-1]
 
     logging.info("version used by this repo: %s", current_version)
     logging.info("latest version is: %s", latest_version)
