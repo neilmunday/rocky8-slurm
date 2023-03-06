@@ -19,10 +19,10 @@ docker pull ghcr.io/neilmunday/rocky8-slurm:latest
 Use the `SLURM_VER` build argument to specify the Slurm version to build in the image, e.g.
 
 ```
-docker build  -t  ghcr.io/neilmunday/rocky8-slurm:22.05.8 -t ghcr.io/neilmunday/rocky8-slurm:latest .
+docker build  -t  ghcr.io/neilmunday/rocky8-slurm:23.02.0 -t ghcr.io/neilmunday/rocky8-slurm:latest .
 ```
 
-The default value is currently 22.05.8.
+The default value is currently 23.02.0.
 
 **Note:** The first release of a Slurm version does not require `-1` in the `SLURM_VER` value.
 
