@@ -1,5 +1,9 @@
 # Change log
 
+## 29th March 2023
+
+* Added support for Slurm 23.02.1
+
 ## 5th March 2023
 
 * Added support for Slurm 23.02.0
